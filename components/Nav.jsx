@@ -1,0 +1,74 @@
+"use client"
+import Image from 'next/image'
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { FiUser } from "react-icons/fi";
+import { IoMdMenu } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
+
+const Nav = () => {
+    const [navOpen, setNavOpen] = useState(false);
+
+    // handler function for nav open
+    const handleOpen = () => {
+        setNavOpen(!navOpen);
+    }
+    const navItems = [
+        { url: "/", label: "Home"},
+        { url: "/about", label: "About Us"},
+        { url: "/faqs", label: "FAQs"},
+        { url: "/recipes", label: "Recipes"},
+    ]
+  return (
+    <nav className='flex items-center justify-between shadow-md py-3 px-6 relative'>
+      <Link href={"/"} className='flex items-center gap-1'>
+        <Image
+        src={"/logo.png"}
+        alt='logo'
+        width={800}
+        height={800}
+        className='w-10 h-10'
+        />
+
+        <p className='font-bold text-xl text-gray-700 max-md:hidden'>KookBook</p>
+      </Link>
+
+      <div className='flex items-center gap-8 max-lg:hidden'>
+        {navItems.map((item, i) => (
+           <Link
+            key={i}
+            href={item.url}
+            className='text-lg hover:text-blue-600 transition-colors duration-300' 
+            >
+                {item.label}
+            </Link>
+        ))}
+            <Link href={"#"} className='flex items-center gap-1 text-lg border px-3 py-1 hover:text-blue-600 hover:border-blue-600 transition-colors duration-300'>
+            <FiUser />
+            <p>Sign In</p>
+            </Link>        
+      </div>
+
+        {/* mobile and tab view */}
+      <div className='h-dvh w-full overflow-hidden lg:hidden absolute top-0 right-0 bg-white flex flex-col items-center justify-center gap-20'>
+         {navItems.map((item, i) => (
+           <Link
+            key={i}
+            href={item.url}
+            className='text-lg hover:text-blue-600 transition-colors duration-300' 
+            >
+                {item.label}
+            </Link>
+        ))}
+      </div>
+
+      <div className='lg:hidden'>
+        <button onClick={handleOpen} className='text-2xl'>
+            {navOpen ? <IoMdClose />  : <IoMdMenu />}
+        </button>
+      </div>
+    </nav>
+  )
+}
+
+export default Nav
