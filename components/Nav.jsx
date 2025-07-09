@@ -44,7 +44,7 @@ const Nav = () => {
           </Link>
         ))}
       </div>
-      <Link href={"#"} className='flex items-center gap-1 text-lg lg:border px-3 py-1
+      <Link href={"/auth/signin"} className='flex items-center gap-1 text-lg lg:border px-3 py-1
        hover:text-blue-600 hover:border-blue-600 transition-colors duration-300 ml-8
        max-lg:ml-auto z-50'>
         <FiUser />
