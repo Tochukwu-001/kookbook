@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
@@ -10,9 +11,12 @@ export default function Home() {
             Home of all Recipes. Diversity in Delicacies.
           </h1>
           <p className="md:text-2xl text-lg text-center">
-            Here at 
-            <span className="md:text-2xl text-blue-600 font-bold"> KookBook</span>,
-            we specialize in the collection of recipes, instructions, and
+            Here at
+            <span className="md:text-2xl text-blue-600 font-bold">
+              {" "}
+              KookBook
+            </span>
+            , we specialize in the collection of recipes, instructions, and
             information about the preparation and serving of foods. It includes
             a variety of appetizers, salads, main courses, side dishes and
             deserts
@@ -39,7 +43,11 @@ export default function Home() {
         <h1>Why Choose Us</h1>
         <div className="lg:px-5 p-3 grid lg:grid-cols-3 md:grid-cols-2">
           <div>
-            
+            <Image src={"/bg.jpg"} width={800} height={800} className="" />
+            <h2>Expert Colinary Culture</h2>
+            <p>
+              
+            </p>
           </div>
         </div>
       </section>
