@@ -1,17 +1,19 @@
-import {  Montserrat, Sora } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
-import { imageOptimizer } from "next/dist/server/image-optimizer";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
-});
+
 
 // const geistMono = montserrat({
 //   variable: "--font-montserrat",
 //   subsets: ["latin"],
 // });
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -22,10 +24,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${montserrat.className}antialiased`}
+        className={`${montserrat.className} antialiased`}
       >
+        <Nav />
         {children}
-      <Nav/>
+        <Footer />
       </body>
     </html>
   );
