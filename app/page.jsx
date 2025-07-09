@@ -3,6 +3,23 @@ import Link from "next/link";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
 export default function Home() {
+  const chooseUs = [
+    {
+      image: "/c1.jpg",
+      title: "Expert Culinary Culture",
+      desc: "Choose us for our expertise, unique perspective, commitment to quality and continous improvement. We showcase a strong passion for food by staying current with culinary trends and techniques.",
+    },
+    {
+      image: "/c2.jpg",
+      title: "Nutritional Insights",
+      desc: "We analyze the meals of our esteemed clients, providing detailed information about their nutritional content. Our core value is to keep you healthy while providing the best of kitchen services",
+    },
+    {
+      image: "/c3.jpg",
+      title: "Cultural Insights",
+      desc: "We inspire our clients to share their various traditional and native recipes and perspective on foods and cooking adding depth and richness to your kitchen desires.",
+    },
+  ];
   return (
     <main className="min-h-dvh bg-[url('/bg.jpg')] bg-no-repeat bg-center bg-cover">
       <section className="min-h-dvh bg-black/60 flex items-center justify-center">
@@ -39,16 +56,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gray-100 min-h-[70vh] p-10">
-        <h1>Why Choose Us</h1>
-        <div className="lg:px-5 p-3 grid lg:grid-cols-3 md:grid-cols-2">
-          <div>
-            <Image src={"/bg.jpg"} width={800} height={800} className="" />
-            <h2>Expert Colinary Culture</h2>
-            <p>
-              
-            </p>
-          </div>
+      <section className="bg-gray-100 min-h-[70vh] p-3 md:p-10">
+        <h1 className="text-center text-3xl md:text-5xl text-blue-600 font-bold mb-5">Why Choose Us</h1>
+        <div className="lg:px-5 p-3 grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+          {chooseUs.map((reason, i) => (
+            <div key={i} className="space-y-3">
+              <Image alt={reason.title.slice(0,4)} src={reason.image} width={800} height={800} className="" />
+              <h2 className="text-center font-bold text-gray-700 text-xl">{reason.title}</h2>
+              <p className="text-sm text-gray-600 text-center">{reason.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
     </main>
