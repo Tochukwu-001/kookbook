@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Montserrat} from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -28,11 +28,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${montserrat.className} antialiased`}
-      > 
-      
-      <Nav/>
+      >
+        <Nav />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
