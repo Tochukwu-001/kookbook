@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Geist, Geist_Mono, Montserrat } from "next/font/google"  
+=======
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+>>>>>>> 97fd02b3d402c4a239c8e12c8d9d9b6c78e995a7
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -14,8 +18,13 @@ const geistMono = Geist_Mono({
 });
 
 const montserrat = Montserrat({
+<<<<<<< HEAD
   subsets:["latin"],
   weight:["100","200","300","400","500","600","700","800","900"],
+=======
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+>>>>>>> 97fd02b3d402c4a239c8e12c8d9d9b6c78e995a7
 });
 
 export const metadata = {
@@ -29,10 +38,16 @@ export default function RootLayout({ children }) {
       <body
         className={`${montserrat.className} antialiased`}
       >
+<<<<<<< HEAD
         <Nav/>
 
         {children}
          <Footer/>
+=======
+        <Nav />
+        {children}
+        <Footer />
+>>>>>>> 97fd02b3d402c4a239c8e12c8d9d9b6c78e995a7
       </body>
     </html>
   );
