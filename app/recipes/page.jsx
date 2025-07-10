@@ -12,7 +12,7 @@ const page = () => {
       author: "Jason Statham",
       title: "Nigerian Party Jollof",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi delectus rerum atque. Omnis hic ea error modi, voluptatem architecto praesentium.",
-      timestamp: "7/9/20205",
+      timestamp: "7/8/20205",
     },
     {
       image: "/c1.jpg",
@@ -26,28 +26,28 @@ const page = () => {
       author: "Jason Statham",
       title: "Nigerian Party Jollof",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi delectus rerum atque. Omnis hic ea error modi, voluptatem architecto praesentium.",
-      timestamp: "7/9/20205",
+      timestamp: "7/10/20205",
     },
     {
       image: "/c2.jpg",
       author: "Jason Statham",
       title: "Nigerian Party Jollof",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi delectus rerum atque. Omnis hic ea error modi, voluptatem architecto praesentium.",
-      timestamp: "7/9/20205",
+      timestamp: "7/11/20205",
     },
     {
       image: "/bg.jpg",
       author: "Jason Statham",
       title: "Nigerian Party Jollof",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi delectus rerum atque. Omnis hic ea error modi, voluptatem architecto praesentium.",
-      timestamp: "7/9/20205",
+      timestamp: "7/12/20205",
     },
     {
       image: "/bg.jpg",
       author: "Jason Statham",
       title: "Nigerian Party Jollof",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi delectus rerum atque. Omnis hic ea error modi, voluptatem architecto praesentium.",
-      timestamp: "7/9/20205",
+      timestamp: "7/13/20205",
     },
   ];
 
