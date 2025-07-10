@@ -69,7 +69,7 @@ const page = () => {
 
       <section className="grid grid-cols-3 gap-3 md:gap-10 md:p-10 p-3">
         {recipes.map((recipe, i) => (
-          <Link href={"#"} key={i} className="space-y-3 shadow-md p-3">
+          <div key={i} className="space-y-3 shadow-md p-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
@@ -95,7 +95,7 @@ const page = () => {
                 <MdKeyboardDoubleArrowRight className="text-lg" />
               </Link>
             </div>
-          </Link>
+          </div>
         ))}
       </section>
     </main>
