@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 const page = () => {
     const initialValues = {
         title: "",
-        recipe: "",
         desc: "",
     };
     const validationSchema = Yup.object({
