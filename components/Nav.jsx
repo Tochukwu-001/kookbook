@@ -5,9 +5,25 @@ import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import { useSession } from "next-auth/react"
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const { data: session } = useSession();
+
+  console.log(session);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   // handler function for nav open
   const handleOpen = () => {
@@ -48,8 +64,8 @@ const Nav = () => {
             {item.label}
           </Link>
         ))}
-
       </div>
+      {!session?.user ? (
         <Link
           href={"/auth/signin"}
           className="flex items-center gap-1 text-lg lg:border px-3 py-1 hover:text-blue-600 hover:border-blue-600 transition-colors duration-300 ml-8 max-lg:ml-auto z-50"
@@ -57,6 +73,36 @@ const Nav = () => {
           <FiUser />
           <p className="max-lg:hidden">Sign In</p>
         </Link>
+      ) : (
+
+        <div>
+          <button
+            id="basic-button"
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
+            <img src={session?.user?.image} alt={session?.user?.name.slice(0, 1).toUpperCase()}
+              className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50" />
+          </button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            slotProps={{
+              list: {
+                'aria-labelledby': 'basic-button',
+              },
+            }}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu>
+        </div>
+      )}
 
       {/* mobile and tab view */}
       {navOpen ? (
