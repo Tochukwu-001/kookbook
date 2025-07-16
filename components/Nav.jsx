@@ -6,6 +6,8 @@ import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react"
+
 
 
 const Nav = () => {
@@ -87,6 +89,24 @@ const Nav = () => {
           {navOpen ? <IoMdClose /> : <IoMdMenu />}
         </button>
       </div>
+      <Menu
+      id="basic-meun"
+      anchorEl={anchorEl}
+      open={open}
+      onClose={handClose}
+      slotProps={{
+        list:{
+          "aria-labelledby": "basic-button",
+        },
+      }}>
+        <MeunItem onClick={handClose}>
+          <Link href={"/profile"}> My Profile</Link>
+        </MeunItem>
+        <MeunItem onClick={handClose}>
+          <Link href={"/add recipe"}
+          
+        </MeunItem>
+      </Menu>
     </nav>
   );
 };

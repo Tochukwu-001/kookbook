@@ -8,6 +8,8 @@ const page = async () => {
   const session = await auth()
 
   console.log(session);
+
+  i
   
   return (
     <main className="min-h-dvh p-3 md:p-10 space-y-5">
