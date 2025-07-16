@@ -5,9 +5,16 @@ import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import {useSession} from "next-auth/react";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { signOut } from "next-auth/react"
 
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const {data: session} = useSession();
+
+  console.log(session);
 
   // handler function for nav open
   const handleOpen = () => {
@@ -22,6 +29,16 @@ const Nav = () => {
     { url: "/faqs", label: "FAQs" },
     { url: "/recipes", label: "Recipes" },
   ];
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   return (
     <nav className="flex items-center justify-between shadow-md py-3 px-6 relative">
@@ -48,19 +65,25 @@ const Nav = () => {
             {item.label}
           </Link>
         ))}
-
       </div>
-        <Link
+      {!session?.user ? (
+         <Link
           href={"/auth/signin"}
-          className="flex items-center gap-1 text-lg lg:border px-3 py-1 hover:text-blue-600 hover:border-blue-600 transition-colors duration-300 ml-8 max-lg:ml-auto z-50"
+          className="flex items-center gap-1 text-lg lg:border px-3 py-1 hover:text-blue-600
+           hover:border-blue-600 transition-colors duration-300 ml-8 max-lg:ml-auto z-50"
         >
           <FiUser />
           <p className="max-lg:hidden">Sign In</p>
         </Link>
+      ) : (<img src={session?.user?.image} alt={session?.user?.name.slice(0,1).toUpperCase}
+      className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50"/> 
+    ) 
 
+  }
       {/* mobile and tab view */}
       {navOpen ? (
-        <div className="h-dvh w-full overflow-hidden lg:hidden absolute top-0 right-0 bg-white flex flex-col items-center justify-center gap-20">
+        <div className="h-dvh w-full overflow-hidden lg:hidden absolute top-0 right-0 bg-white 
+        flex flex-col items-center justify-center gap-20">
           {navItems.map((item, i) => (
             <Link
               key={i}
