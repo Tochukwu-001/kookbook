@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import { signIn } from "next-auth/react"
 
 const Nav = () => {
     const [navOpen, setNavOpen] = useState(false);
