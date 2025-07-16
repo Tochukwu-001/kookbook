@@ -5,14 +5,29 @@ import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+<<<<<<< HEAD
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react"
 
 
+=======
+import { useSession, signOut } from "next-auth/react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+>>>>>>> dfde4445e0f43c8ca03e9b453654f8547ead76b7
 
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
   const { data: session, status } = useSession();
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   console.log(session, status);
 
@@ -65,8 +80,44 @@ const Nav = () => {
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-        <img src={session?.user?.image} alt={session?.user?.name.slice(0,1).toUpperCase()} className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50" />
-        
+        <div>
+          <div>
+            <button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <img
+                src={session?.user?.image}
+                alt={session?.user?.name.slice(0, 1).toUpperCase()}
+                className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50"
+              />
+            </button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              slotProps={{
+                list: {
+                  "aria-labelledby": "basic-button",
+                },
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link href={"/profile"}>My Profile</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={"/add-recipe"}>Add Recipe</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <button onClick={() => signOut()}>Sign Out</button>
+              </MenuItem>
+            </Menu>
+          </div>
+        </div>
       )}
 
       {/* mobile and tab view */}
@@ -103,7 +154,7 @@ const Nav = () => {
           <Link href={"/profile"}> My Profile</Link>
         </MeunItem>
         <MeunItem onClick={handClose}>
-          <Link href={"/add recipe"}
+          <Link href={"/add recipe"}>Recipe</Link>
           
         </MeunItem>
       </Menu>
