@@ -5,25 +5,14 @@ import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
-import { useSession } from "next-auth/react"
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { useSession } from "next-auth/react";
+
 
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
-  console.log(session);
-
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
+  console.log(session, status);
 
   // handler function for nav open
   const handleOpen = () => {
@@ -74,34 +63,8 @@ const Nav = () => {
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-
-        <div>
-          <button
-            id="basic-button"
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
-          >
-            <img src={session?.user?.image} alt={session?.user?.name.slice(0, 1).toUpperCase()}
-              className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50" />
-          </button>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            slotProps={{
-              list: {
-                'aria-labelledby': 'basic-button',
-              },
-            }}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
-        </div>
+        <img src={session?.user?.image} alt={session?.user?.name.slice(0,1).toUpperCase()} className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50" />
+        
       )}
 
       {/* mobile and tab view */}
@@ -119,7 +82,7 @@ const Nav = () => {
         </div>
       ) : null}
 
-      <div className="lg:hidden z-50 mt-1">
+      <div className="lg:hidden z-50 mt-1 max-lg:ml-2">
         <button onClick={handleOpen} className="text-2xl">
           {navOpen ? <IoMdClose /> : <IoMdMenu />}
         </button>

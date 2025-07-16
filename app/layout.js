@@ -20,16 +20,14 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "KookBook | Sharing recipes",
+  title: "KookBook | Sharing Recipes",
   description: "Cooking Inspirations. A kitchen companion for everyday dishes.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.className} antialiased`}
-      >
+      <body className={`${montserrat.className} antialiased`}>
         <AuthProvider>
           <Nav />
           {children}
