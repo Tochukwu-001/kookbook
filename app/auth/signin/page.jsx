@@ -7,13 +7,14 @@ import { redirect } from "next/navigation";
 
 
 
-const page = async () => {
+
+  const page = async () => {
   const session = await auth()
 
   console.log(session);
 
   if (session) {
-    redirect("/add-recipe")
+    redirect("/add-recipes")
   }
   
   return (
@@ -23,7 +24,7 @@ const page = async () => {
       </h1>
       <div className="flex items-center justify-center">
         <div className="space-y-10 max-md:w-full md:w-xl">
-          <form
+         <form
             action={async () => {
               "use server";
               await signIn("google");
