@@ -67,53 +67,55 @@ const Nav = () => {
       {!session?.user ? (
         <Link
           href={"/auth/signin"}
-          className="flex items-center gap-1 text-lg lg:border px-3 py-1 hover:text-blue-600 hover:border-blue-600 transition-colors duration-300 ml-8 max-lg:ml-auto z-50"
+          className="flex items-center gap-1 text-lg lg:border px-3 py-1 hover:text-blue-600
+           hover:border-blue-600 transition-colors duration-300 ml-8 max-lg:ml-auto z-50"
         >
           <FiUser />
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-          <div className="ml-auto z-50">
-            <button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <img
-                src={session?.user?.image}
-                alt={session?.user?.name.slice(0, 1).toUpperCase()}
-                className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50"
-              />
-            </button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              slotProps={{
-                list: {
-                  "aria-labelledby": "basic-button",
-                },
-              }}
-            >
-              <MenuItem onClick={handleClose}>
-                <Link href={"/profile"}>My Profile</Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link href={"/add-recipe"}>Add Recipe</Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <button onClick={() => signOut()}>Sign Out</button>
-              </MenuItem>
-            </Menu>
-          </div>
+        <div className="max-md:ml-auto z-50">
+          <button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <img
+              src={session?.user?.image}
+              alt={session?.user?.name.slice(0, 1).toUpperCase()}
+              className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50"
+            />
+          </button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            slotProps={{
+              list: {
+                "aria-labelledby": "basic-button",
+              },
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link href={"/profile"}>My Profile</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link href={"/add-recipe"}>Add Recipe</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <button onClick={() => signOut()}>Sign Out</button>
+            </MenuItem>
+          </Menu>
+        </div>
       )}
 
       {/* mobile and tab view */}
       {navOpen ? (
-        <div className="h-dvh w-full overflow-hidden lg:hidden absolute top-0 right-0 bg-white flex flex-col items-center justify-center gap-20">
+        <div className="h-dvh w-full overflow-hidden lg:hidden absolute top-0 right-0 bg-white 
+        flex flex-col items-center justify-center gap-20">
           {navItems.map((item, i) => (
             <Link
               key={i}

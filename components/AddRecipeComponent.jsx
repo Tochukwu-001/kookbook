@@ -4,11 +4,12 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { SlPaperPlane } from "react-icons/sl";
 import * as Yup from "yup";
 
-const AddRecipeComponent = () => { 
-    const author = session?.user?.name 
-    const userimg = session?.user?.image;
+const AddRecipeComponent = ({ session }) => {
+  const author = session?.user?.name;
+  const userImg = session?.user?.image;
 
-    console.log()
+  console.log(author, userImg);
+
   const initialValues = {
     title: "",
     recipe: "",
@@ -23,9 +24,9 @@ const AddRecipeComponent = () => {
       .min(10, "Mininum of 10 characters"),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, { resetForm }) => {
     console.log(values);
-    
+    resetForm();
   };
 
   return (
@@ -44,8 +45,9 @@ const AddRecipeComponent = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
+          onSubmit={handleSubmit}
         >
-          <Form onSubmit={handleSubmit} className="max-w-3xl mx-auto py-10 space-y-5">
+          <Form className="max-w-3xl mx-auto py-10 space-y-5">
             <div>
               <label className="text-xs">Recipe Title</label>
               <Field
@@ -89,7 +91,8 @@ const AddRecipeComponent = () => {
 
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 bg-blue-600 w-full py-2 text-white text-lg hover:bg-blue-700 transition-all duration-300"
+              className="flex items-center justify-center gap-2 bg-blue-600 w-full py-2 text-white
+               text-lg hover:bg-blue-700 transition-all duration-300"
             >
               Post Recipe
               <SlPaperPlane />
