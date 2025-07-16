@@ -5,9 +5,14 @@ import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import { useSession } from "next-auth/react";
+
 
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const { data: session, status } = useSession();
+
+  console.log(session, status);
 
   // handler function for nav open
   const handleOpen = () => {
@@ -48,8 +53,8 @@ const Nav = () => {
             {item.label}
           </Link>
         ))}
-
       </div>
+      {!session?.user ? (
         <Link
           href={"/auth/signin"}
           className="flex items-center gap-1 text-lg lg:border px-3 py-1 hover:text-blue-600 hover:border-blue-600 transition-colors duration-300 ml-8 max-lg:ml-auto z-50"
@@ -57,6 +62,10 @@ const Nav = () => {
           <FiUser />
           <p className="max-lg:hidden">Sign In</p>
         </Link>
+      ) : (
+        <img src={session?.user?.image} alt={session?.user?.name.slice(0,1).toUpperCase()} className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50" />
+        
+      )}
 
       {/* mobile and tab view */}
       {navOpen ? (
@@ -73,7 +82,7 @@ const Nav = () => {
         </div>
       ) : null}
 
-      <div className="lg:hidden z-50 mt-1">
+      <div className="lg:hidden z-50 mt-1 max-lg:ml-2">
         <button onClick={handleOpen} className="text-2xl">
           {navOpen ? <IoMdClose /> : <IoMdMenu />}
         </button>
