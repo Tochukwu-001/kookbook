@@ -73,43 +73,41 @@ const Nav = () => {
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-        <div>
-          <div>
-            <button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <img
-                src={session?.user?.image}
-                alt={session?.user?.name.slice(0, 1).toUpperCase()}
-                className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50"
-              />
-            </button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              slotProps={{
-                list: {
-                  "aria-labelledby": "basic-button",
-                },
-              }}
-            >
-              <MenuItem onClick={handleClose}>
-                <Link href={"/profile"}>My Profile</Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link href={"/add-recipe"}>Add Recipe</Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <button onClick={() => signOut()}>Sign Out</button>
-              </MenuItem>
-            </Menu>
-          </div>
+        <div className="max-md:ml-auto z-50">
+          <button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <img
+              src={session?.user?.image}
+              alt={session?.user?.name.slice(0, 1).toUpperCase()}
+              className="w-10 h-10 rounded-full ml-8 max-lg:ml-auto z-50"
+            />
+          </button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            slotProps={{
+              list: {
+                "aria-labelledby": "basic-button",
+              },
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link href={"/profile"}>My Profile</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link href={"/add-recipe"}>Add Recipe</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <button onClick={() => signOut()}>Sign Out</button>
+            </MenuItem>
+          </Menu>
         </div>
       )}
 
