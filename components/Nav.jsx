@@ -73,7 +73,7 @@ const Nav = () => {
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-        <div className="max-md:ml-auto z-50">
+        <div className="max-lg:ml-auto z-50">
           <button
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
