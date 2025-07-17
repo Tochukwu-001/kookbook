@@ -28,16 +28,19 @@ const page = async () => {
               await signIn("google");
             }}
           >
-            <button type="submit" className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
+            <button type="submit" className="border flex items-center justify-center gap-2 bg-blue-600 text-white
+             py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
               <p>Sign In with Google</p>
               <FaGoogle />
             </button>
           </form>
-          <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
+          <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white 
+          py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
             <p>Sign In with Github</p>
             <FaGithub />
           </button>
-          <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
+          <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full
+           text-xl hover:bg-blue-700 transition-all w-full">
             <p>Sign In with Facebook</p>
             <FaFacebookF />
           </button>
