@@ -73,8 +73,8 @@ const Nav = () => {
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-        <div>
-          <div>
+        
+          <div className="max-lg:ml-auto z-50">
             <button
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
@@ -110,7 +110,7 @@ const Nav = () => {
               </MenuItem>
             </Menu>
           </div>
-        </div>
+        
       )}
 
       {/* mobile and tab view */}
