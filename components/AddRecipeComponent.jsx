@@ -9,15 +9,14 @@ import { TbLoader3 } from "react-icons/tb";
 import { IoIosClose } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
 
-const AddRecipeComponent = ({session}) => {
-    const author = session?.user?.name
-    const userImg = session?.user?.image
+const AddRecipeComponent = ({ session }) => {
+  const author = session?.user?.name;
+  const userImg = session?.user?.image;
 
-    const [loading, setLoading] = useState(false);
-    const [showModal, setShowModal] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
-    console.log(author, userImg);
-    
+  console.log(author, userImg);
 
   const initialValues = {
     title: "",
@@ -33,26 +32,25 @@ const AddRecipeComponent = ({session}) => {
       .min(10, "Mininum of 10 characters"),
   });
 
-  const handleSubmit = async (values, {resetForm}) => {
-    setLoading(true)
+  const handleSubmit = async (values, { resetForm }) => {
+    setLoading(true);
     try {
-        // object to be sent to the db
-        const recipeDetails = {
-            image: session?.user?.image,
-            author: session?.user?.name,
-            timestamp: new Date().toLocaleDateString(),
-            ...values,
-        };
-        const docRef = await addDoc(collection(db, "recipes"), recipeDetails)
-        setShowModal(true)
+      // object to be sent to the db
+      const recipeDetails = {
+        image: session?.user?.image,
+        author: session?.user?.name,
+        timestamp: new Date().toLocaleDateString(),
+        ...values,
+      };
+      const docRef = await addDoc(collection(db, "recipes"), recipeDetails);
+      setShowModal(true)
     } catch (error) {
-        console.error(error)
-        alert("Something went wrong")
+      console.error(error);
+      alert("Something went wrong");
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
-    console.log(values);
-    resetForm()
+    resetForm();
   };
 
   return (
@@ -71,7 +69,7 @@ const AddRecipeComponent = ({session}) => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit} 
+          onSubmit={handleSubmit}
         >
           <Form className="max-w-3xl mx-auto py-10 space-y-5">
             <div>
@@ -116,34 +114,36 @@ const AddRecipeComponent = ({session}) => {
             </div>
 
             <button
-            disabled = {loading}
+              disabled={loading}
               type="submit"
-              className={`flex items-center justify-center gap-2 bg-blue-600 w-full py-2 text-white text-lg hover:bg-blue-700 transition-all duration-300
-                ${loading ? "bg-gray-500 hover:bg-gray-500 cursor-not-allowed" : "" }`}
+              className={`flex items-center justify-center gap-2 bg-blue-600 w-full py-2 text-white text-lg hover:bg-blue-700 transition-all duration-300 ${
+                loading
+                  ? "bg-gray-500 hover:bg-gray-500 cursor-not-allowed"
+                  : ""
+              }`}
             >
-                {loading ? (
-                    <TbLoader3 className="text-2xl animate-spin text-center" />
-                ) : (
-                    <span className="flex items-center gap-2">
-              Post Recipe
-              <SlPaperPlane />
-              </span>
+              {loading ? (
+                <TbLoader3 className="text-2xl animate-spin text-center" />
+              ) : (
+                <span className="flex items-center gap-2">
+                  Post Recipe
+                  <SlPaperPlane />
+                </span>
               )}
             </button>
           </Form>
         </Formik>
       </section>
-      
-{/* success section */}
+
       <div className={`h-auto w-full bg-black/80 absolute inset-0 ${showModal ? "flex" : "hidden"} items-center justify-center`}>
         <div className="w-[30rem] h-[15rem] bg-white relative flex items-center justify-center">
-              <button onClick={()=> setShowModal(false)} className="absolute right-2 top-2">
-                <IoIosClose className="text-4xl text-red-600" />
-              </button>
-              <div className="flex flex-col gap-5 items-center justify-center">
-                <FaCheckCircle className="text-center text-9xl text-green-600" />
-                <p className="text-lg">Your Recipe has been successfully uploaded</p>
-              </div>
+          <button onClick={()=> setShowModal(false)} className="absolute right-2 top-2">
+            <IoIosClose className="text-4xl text-red-600" />
+          </button>
+          <div className="flex flex-col gap-5 items-center justify-center">
+            <FaCheckCircle className="text-center text-9xl text-green-600" />
+            <p className="text-lg ">Your Recipe has been sucessfully uploaded</p>
+          </div>
         </div>
       </div>
     </main>

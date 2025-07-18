@@ -1,5 +1,5 @@
 "use server"
-import { auth } from "@/auth";
+import { auth } from '@/auth'
 import AddRecipeComponent from '@/components/AddRecipeComponent'
 import { redirect } from 'next/navigation'
 import React from 'react'
@@ -18,4 +18,3 @@ const page = async () => {
 }
 
 export default page
-
