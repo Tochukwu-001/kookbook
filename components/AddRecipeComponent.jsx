@@ -133,7 +133,8 @@ const AddRecipeComponent = ({session}) => {
           </Form>
         </Formik>
       </section>
-
+      
+{/* success section */}
       <div className={`h-auto w-full bg-black/80 absolute inset-0 ${showModal ? "flex" : "hidden"} items-center justify-center`}>
         <div className="w-[30rem] h-[15rem] bg-white relative flex items-center justify-center">
               <button onClick={()=> setShowModal(false)} className="absolute right-2 top-2">

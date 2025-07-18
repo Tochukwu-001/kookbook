@@ -3,17 +3,11 @@ import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { auth, signIn } from "@/auth";
-import { redirect } from "next/navigation";
-
 
 const page = async () => {
   const session = await auth()
 
   console.log(session);
-
-  if (session) {
-    redirect("/add-recipe")
-  }
   
   return (
     <main className="min-h-dvh p-3 md:p-10 space-y-5">
