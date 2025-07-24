@@ -18,4 +18,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       privateKey: process.env.AUTH_FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
     }),
   }),
+
+   pages: {
+    signIn: "/auth/signin",
+  },
 });
