@@ -12,6 +12,7 @@ import { FaCheckCircle } from "react-icons/fa";
 const AddRecipeComponent = ({ session }) => {
   const author = session?.user?.name;
   const userImg = session?.user?.image;
+  const uid = session?.user?.id;
 
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false)
@@ -39,6 +40,7 @@ const AddRecipeComponent = ({ session }) => {
       const recipeDetails = {
         image: session?.user?.image,
         author: session?.user?.name,
+        authorId: uid,
         timestamp: new Date().toLocaleDateString(),
         ...values,
       };

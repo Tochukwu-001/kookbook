@@ -4,9 +4,10 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { IoIosMore } from "react-icons/io";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase.config";
 import { TbLoader3 } from "react-icons/tb";
+
 
 const page = () => {
   const [recipes, setRecipes] = useState([]);
@@ -38,6 +39,8 @@ const page = () => {
   useEffect(() => {
     fetchRecipe();
   }, []);
+
+ 
 
   return (
     <main className="min-h-dvh">
@@ -72,6 +75,7 @@ const page = () => {
                   />
                   <h2>{recipe.author}</h2>
                 </div>
+
                 <IoIosMore className="text-xl" />
               </div>
               <p className="text-lg">{recipe.title}</p>
