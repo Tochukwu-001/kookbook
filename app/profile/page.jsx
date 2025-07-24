@@ -1,8 +1,11 @@
+"use server";
+import { auth } from '@/auth';
 import React from 'react'
 
-const page = () => {
+const page = async () => {
+  const session = await auth()
   return (
-    <main>
+    <main className='min-h-dvh'>
       my profile
     </main>
   )
