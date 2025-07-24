@@ -16,7 +16,7 @@ const page = async () => {
   }
   
   return (
-    <main className="min-h-dvh p-3 md:p-10 space-y-5">
+    <main className="min-h-dvh p-3 md:p-10 space-y-5 bg-gradient-to-r from-gray-50 to-blue-100">
       <h1 className="text-center font-bold md:text-3xl text-xl text-gray-700">
         Sign in to your account to continue
       </h1>
