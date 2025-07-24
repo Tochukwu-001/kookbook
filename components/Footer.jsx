@@ -15,7 +15,8 @@ const Footer = () => {
     { url: "#", label: "Terms of Use" },
   ];
   return (
-    <main className="px-5 py-2 bg-gray-100 border-t border-gray-300 flex max-lg:flex-col max-lg:gap-3 items-center justify-between">
+    <main className="px-5 py-2 bg-gray-100 border-t border-gray-300 flex max-lg:flex-col max-lg:gap-3 
+    items-center justify-between">
       <Link href={"/"} className="flex items-center gap-1 z-50">
         <Image
           src={"/logo.png"}
