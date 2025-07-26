@@ -5,16 +5,15 @@ import { FaFacebookF } from "react-icons/fa";
 import { auth, signIn } from "@/auth";
 import { redirect } from "next/navigation";
 
-
 const page = async () => {
-  const session = await auth()
+  const session = await auth();
 
   console.log(session);
 
   if (session) {
-    redirect("/add-recipe")
+    redirect("/add-recipe");
   }
-  
+
   return (
     <main className="min-h-dvh p-3 md:p-10 space-y-5">
       <h1 className="text-center font-bold md:text-3xl text-xl text-gray-700">
@@ -28,15 +27,26 @@ const page = async () => {
               await signIn("google");
             }}
           >
-            <button type="submit" className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
+            <button
+              type="submit"
+              className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full"
+            >
               <p>Sign In with Google</p>
               <FaGoogle />
             </button>
           </form>
-          <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
-            <p>Sign In with Github</p>
-            <FaGithub />
-          </button>
+          <form
+            action={async () => {
+              "use server";
+              await signIn("github");
+            }}
+          >
+            <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
+              <p>Sign In with Github</p>
+              <FaGithub />
+            </button>
+          </form>
+
           <button className="border flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-full text-xl hover:bg-blue-700 transition-all w-full">
             <p>Sign In with Facebook</p>
             <FaFacebookF />
