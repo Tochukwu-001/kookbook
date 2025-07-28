@@ -10,9 +10,9 @@ const page = async () => {
     redirect("/auth/signin")
   }
   return (
-   <main>
-    <RecipeComponent session={session}/>
-   </main>
+    <main>
+      <RecipeComponent session={session} />
+    </main>
   )
 }
 

@@ -7,10 +7,9 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase.config";
 import { TbLoader3 } from "react-icons/tb";
 import { FaRegTrashAlt } from "react-icons/fa";
-import {doc, deleteDoc} from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 
-
-const RecipeComponent = ({session}) => {
+const RecipeComponent = ({ session }) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,20 +31,20 @@ const RecipeComponent = ({session}) => {
     } catch (error) {
       console.error("Error fetching recipes", error);
       alert("An error occurred");
-    } finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
-
 
   useEffect(() => {
     fetchRecipe();
   }, []);
 
-  const handleDelete = async (id)=>{
-    await deleteDoc(doc(db, "recipes", id))
-  }
- 
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "recipes", id));
+    fetchRecipe()
+  };
+
   return (
     <main className="min-h-dvh">
       <section className="min-h-[40vh] bg-[url('/bg.jpg')] bg-no-repeat bg-center bg-cover bg-fixed">
@@ -81,15 +80,13 @@ const RecipeComponent = ({session}) => {
                 </div>
 
                 <div>
-                    {session?.user?.id == recipe.authorId ? (
-                            
-                    <button onClick={() => handleDelete(recipe.id)} className="p-2 rounded-full hover:bg-red-500  ">
-                        <FaRegTrashAlt className="text-base"/> 
+                  {session?.user?.id == recipe.authorId ? (
+                    <button onClick={()=> handleDelete(recipe.id)} className="p-2 rounded-full hover:bg-red-500 hover:text-white transition-all">
+                      <FaRegTrashAlt className="text-base" />
                     </button>
-                        ) : (
-                            <IoIosMore className="text-xl" /> 
-                        )}
-
+                  ) : (
+                    <IoIosMore className="text-xl" />
+                  )}
                 </div>
               </div>
               <p className="text-lg">{recipe.title}</p>
