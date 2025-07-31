@@ -23,10 +23,10 @@ const ProfileRecipes = ({ session }) => {
           ...doc.data(),
         };
         recipesArray.push(userRecipe);
-        console.log(recipesArray);
+        // console.log(recipesArray);
       }
       setUserRecipesArray(recipesArray);
-      console.log(userRecipesArray);
+      // console.log(userRecipesArray);
       setFetching(false);
     } catch (error) {
       console.error(error);

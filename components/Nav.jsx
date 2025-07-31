@@ -22,14 +22,14 @@ const Nav = () => {
     setAnchorEl(null);
   };
 
-  console.log(session, status);
+  // console.log(session, status);
 
   // handler function for nav open
   const handleOpen = () => {
     setNavOpen(!navOpen);
   };
 
-  console.log(navOpen);
+  // console.log(navOpen);
 
   const navItems = [
     { url: "/", label: "Home" },
@@ -118,6 +118,7 @@ const Nav = () => {
             <Link
               key={i}
               href={item.url}
+              onClick={()=> setNavOpen(false)}
               className="text-lg hover:text-blue-600 transition-colors duration-300"
             >
               {item.label}
