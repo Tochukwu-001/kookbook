@@ -24,10 +24,10 @@ const RecipeComponent = ({ session }) => {
         const rec = { id, ...doc.data() };
         console.log(rec);
         recipeData.push(rec);
-        console.log(recipeData);
+        // console.log(recipeData);
       });
       setRecipes(recipeData);
-      console.log(recipes);
+      // console.log(recipes);
     } catch (error) {
       console.error("Error fetching recipes", error);
       alert("An error occurred");

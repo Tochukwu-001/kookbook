@@ -22,11 +22,21 @@ const Nav = () => {
     setAnchorEl(null);
   };
 
+<<<<<<< HEAD
+=======
+  // console.log(session, status);
+
+>>>>>>> dbfafa4d47099ea5bc7f8b23ce5e19c140fc5f09
   // handler function for nav open
   const handleOpen = () => {
     setNavOpen(!navOpen);
   };
 
+<<<<<<< HEAD
+=======
+  // console.log(navOpen);
+
+>>>>>>> dbfafa4d47099ea5bc7f8b23ce5e19c140fc5f09
   const navItems = [
     { url: "/", label: "Home" },
     { url: "/about", label: "About Us" },
