@@ -17,7 +17,7 @@ const AddRecipeComponent = ({ session }) => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false)
 
-  console.log(author, userImg);
+  // console.log(author, userImg);
 
   const initialValues = {
     title: "",
