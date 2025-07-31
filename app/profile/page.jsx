@@ -65,7 +65,7 @@ const page = async () => {
 
       <EditProfile currentName={name} userId={uid} />
 
-      {/* <ProfileRecipes q={q} /> */}
+      <ProfileRecipes session={session} />
     </main>
   );
 };

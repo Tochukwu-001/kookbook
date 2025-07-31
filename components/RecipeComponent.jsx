@@ -81,7 +81,8 @@ const RecipeComponent = ({ session }) => {
 
                 <div>
                   {session?.user?.id == recipe.authorId ? (
-                    <button onClick={()=> handleDelete(recipe.id)} className="p-2 rounded-full hover:bg-red-500 hover:text-white transition-all">
+                    <button onClick={()=> handleDelete(recipe.id)} className="p-2 rounded-full hover:bg-red-500
+                     hover:text-white transition-all">
                       <FaRegTrashAlt className="text-base" />
                     </button>
                   ) : (
@@ -95,7 +96,8 @@ const RecipeComponent = ({ session }) => {
                 <p>{recipe.timestamp}</p>
                 <Link
                   href={"/recipes/" + recipe.id}
-                  className="flex items-center text-sm text-gray-600 hover:text-black transition-all duration-300"
+                  className="flex items-center text-sm text-gray-600 hover:text-black transition-all 
+                  duration-300"
                 >
                   Read More
                   <MdKeyboardDoubleArrowRight className="text-lg" />
