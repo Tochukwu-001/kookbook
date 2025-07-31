@@ -3,6 +3,16 @@ import React from 'react'
 const page = () => {
   return (
     <main>
+        <section>
+            <div>
+                <h1>
+                    Who We Are?
+                </h1>
+                <p>
+                    
+                </p>
+            </div>
+        </section>
         <div>
             About Us
             Welcome to Kookbook — your digital kitchen companion!
