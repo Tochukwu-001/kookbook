@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import AuthProvider from "@/components/AuthProvider";
+
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import AuthProvider from "./components/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${montserrat.className} antialiased`}>
         <AuthProvider>
-          <Nav />
+          <Nav/>
           {children}
-          <Footer />
+          <Footer/>
         </AuthProvider>
       </body>
     </html>

@@ -22,14 +22,14 @@ const Nav = () => {
     setAnchorEl(null);
   };
 
-  console.log(session, status);
+  // console.log(session, status);
 
   // handler function for nav open
   const handleOpen = () => {
     setNavOpen(!navOpen);
   };
 
-  console.log(navOpen);
+  // console.log(navOpen);
 
   const navItems = [
     { url: "/", label: "Home" },
@@ -73,7 +73,7 @@ const Nav = () => {
           <p className="max-lg:hidden">Sign In</p>
         </Link>
       ) : (
-        <div className="max-md:ml-auto z-50">
+        <div className="max-lg:ml-auto z-50">
           <button
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
@@ -102,7 +102,7 @@ const Nav = () => {
               <Link href={"/profile"}>My Profile</Link>
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <Link href={"/add-recipe"}>Add Recipe</Link>
+              <Link href={"/add-recipes"}>Add Recipe</Link>
             </MenuItem>
             <MenuItem onClick={handleClose}>
               <button onClick={() => signOut()}>Sign Out</button>
@@ -116,6 +116,7 @@ const Nav = () => {
         <div className="h-dvh w-full overflow-hidden lg:hidden absolute top-0 right-0 bg-white flex flex-col items-center justify-center gap-20">
           {navItems.map((item, i) => (
             <Link
+              onClick={()=> setNavOpen(false)}
               key={i}
               href={item.url}
               className="text-lg hover:text-blue-600 transition-colors duration-300"
